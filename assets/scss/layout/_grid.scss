@@ -1,0 +1,40 @@
+// 重複邏輯
+@use "sass:math";
+
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        flex: 0 100% * math.div($i, 12);
+    }
+
+    @include breakpoint(md) {
+        .col-#{$i} {
+            flex: 1 100%;
+        }
+    }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--gutter-y) * -1);
+    margin-right: calc(var(--gutter-x) * -0.5);
+    margin-left: calc(var(--gutter-x) * -0.5);
+
+    >[class^=col-] {
+        box-sizing: border-box;
+        flex-shrink: 0;
+        width: 100%;
+        max-width: 100%;
+        padding-right: calc(var(--gutter-x) * 0.5);
+        padding-left: calc(var(--gutter-x) * 0.5);
+        margin-top: var(--gutter-y);
+    }
+}
+
+.col {
+    flex: 1 0 0%;
+
+    @include breakpoint(md) {
+        flex: 1 100%;
+    }
+}

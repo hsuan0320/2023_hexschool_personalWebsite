@@ -1,0 +1,8 @@
+// 響應式
+@mixin breakpoint($size) {
+    @if $size ==md {
+        @media (max-width: 992px) {
+            @content;
+        }
+    }
+}
